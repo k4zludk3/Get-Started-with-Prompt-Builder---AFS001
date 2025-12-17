@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>GenAiPromptTemplate</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>GenAiPromptTemplateActv</name>
+    </types>
+    <types>
+        <member>Experience_Record_Page</member>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <member>PersonalizedGuestExperience</member>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <member>PersonalizedSchedule</member>
+        <member>ExperienceSessionController</member>
+        <name>Flow</name>
+    </types>
+    <types>
+        <member>Contact.Personalized_Schedule</member>
+        <name>Button</name>
+    </types>
+    <version>64.0</version>
+</Package>
