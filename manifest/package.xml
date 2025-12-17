@@ -23,7 +23,7 @@
     </types>
     <types>
         <member>Contact.Personalized_Schedule</member>
-        <name>Button</name>
+        <name>QuickAction</name>
     </types>
     <version>64.0</version>
 </Package>
