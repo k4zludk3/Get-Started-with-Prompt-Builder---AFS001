@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type --></label>
+    <name>Type__c</name>
+    <picklistValues>
+        <masterLabel>Adventure Activities</masterLabel>
+        <translation><!-- Adventure Activities --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Beaches &amp; Snorkeling</masterLabel>
+        <translation><!-- Beaches &amp; Snorkeling --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cultural Tours &amp; Workshops</masterLabel>
+        <translation><!-- Cultural Tours &amp; Workshops --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dining Experiences</masterLabel>
+        <translation><!-- Dining Experiences --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Family &amp; Kids&apos; Activities</masterLabel>
+        <translation><!-- Family &amp; Kids&apos; Activities --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fitness &amp; Exercise</masterLabel>
+        <translation><!-- Fitness &amp; Exercise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Golf</masterLabel>
+        <translation><!-- Golf --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nature &amp; Eco Tours</masterLabel>
+        <translation><!-- Nature &amp; Eco Tours --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nightlife &amp; Entertainment</masterLabel>
+        <translation><!-- Nightlife &amp; Entertainment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Relaxation &amp; Quiet Zones</masterLabel>
+        <translation><!-- Relaxation &amp; Quiet Zones --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spa &amp; Wellness</masterLabel>
+        <translation><!-- Spa &amp; Wellness --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Swimming Pools</masterLabel>
+        <translation><!-- Swimming Pools --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tennis &amp; Pickleball</masterLabel>
+        <translation><!-- Tennis &amp; Pickleball --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Water Sports</masterLabel>
+        <translation><!-- Water Sports --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

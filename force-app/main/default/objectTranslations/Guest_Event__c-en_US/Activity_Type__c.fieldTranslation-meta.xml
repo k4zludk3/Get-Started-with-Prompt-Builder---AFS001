@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Activity Type --></label>
+    <name>Activity_Type__c</name>
+    <picklistValues>
+        <masterLabel>Beach Access</masterLabel>
+        <translation><!-- Beach Access --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Concierge Services</masterLabel>
+        <translation><!-- Concierge Services --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Event Attendance</masterLabel>
+        <translation><!-- Event Attendance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Experience</masterLabel>
+        <translation><!-- Experience --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fitness Center</masterLabel>
+        <translation><!-- Fitness Center --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Golf</masterLabel>
+        <translation><!-- Golf --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Guest Check-in</masterLabel>
+        <translation><!-- Guest Check-in --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Guest Check-out</masterLabel>
+        <translation><!-- Guest Check-out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Housekeeping</masterLabel>
+        <translation><!-- Housekeeping --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pool</masterLabel>
+        <translation><!-- Pool --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reception</masterLabel>
+        <translation><!-- Reception --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Restaurant</masterLabel>
+        <translation><!-- Restaurant --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Room Service</masterLabel>
+        <translation><!-- Room Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Shopping</masterLabel>
+        <translation><!-- Shopping --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spa</masterLabel>
+        <translation><!-- Spa --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

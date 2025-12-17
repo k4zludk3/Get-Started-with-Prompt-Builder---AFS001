@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>ox85NUwwOKBEUB6fHiUm0I46L4VHDXtRvPEudbbFHNI=_1</activeVersionIdentifier>
+    <description>Business email introducing agent and recommending resort product</description>
+    <developerName>Introduce_Yourself_and_Recommend_Product</developerName>
+    <masterLabel>Introduce Yourself and Recommend Product</masterLabel>
+    <relatedEntity>Lead</relatedEntity>
+    <templateVersions>
+        <content>You are a Sales Executive and your name is {!$Input:Sender.Name} from Coral Cloud Resorts. Your prospect is {!$Input:Recipient.Name}, who has the title/role of {!$Input:Recipient.Title} from the company called {!$Input:Recipient.Company}.
+
+When I ask you to generate a cold introduction email to your prospect, you must strictly follow my instructions below.
+
+Instructions: &quot;&quot;&quot;
+Before you start writing the email, you must research about the company, {!$Input:Recipient.Company}, their needs, interests, and how you can provide value to them.
+Use the information from your research and align that to the title/role of the recipient {!$Input:Recipient.Title} and the industry {!$Input:Recipient.Industry} to create a personalized and compelling message that will establish rapport with {!$Input:Recipient.Name}.
+
+You want to indirectly express building a strong business relationship with {!$Input:Recipient.Name} and explore opportunities for hosting their offsite meetings and other events.
+
+The salutation must only contain the recipient&apos;s first name.
+You must strictly not use &quot;I hope this email finds you well&quot; ,&quot;I hope this email finds you doing well&quot;, or any other variation that expresses well-wishes for the recipient&apos;s well-being to open the email.
+
+Once you’ve established rapport with your prospect, indirectly introduce {!$Input:Sender.CompanyName}’s product called {!$Input:Product2.Name} by clearly articulating its unique value, benefits, and functionalities. Highlight how it can positively impact {!$Input:Recipient.Name} and {!$Input:Recipient.Company}. Use specific and compelling language using action-oriented verbs to showcase the functionalities of {!$Input:Product2.Name}.
+
+Product name: {!$Input:Product2.Name}
+Product description: {!$Input:Product2.Description}
+
+Propose a meeting with your prospect and express a desire to learn more about their needs.
+Indirectly encourage the prospect {!$Input:Recipient.Name} to respond to your email by showing that you are willing to discuss opportunities for working together and answer any questions they may have.
+
+End the email with a clear call to action for {!$Input:Recipient.Name} to attend a short meeting. In a sentence, give a meeting slot with the placeholder [Provide: {DATE AND TIME}] for your prospect to choose from. You must leave the placeholder [Provide: {DATE AND TIME}] blank, because the human must personalize this placeholder. You need to ask {!$Input:Recipient.Name} if [Provide: {DATE AND TIME}] works for them.
+
+Generate a subject line that can increase open rate using words and content that is related to the email body content.
+&quot;&quot;&quot;
+
+Now generate the cold introduction email to your prospect.
+</content>
+        <inputs>
+            <apiName>Sender</apiName>
+            <definition>SOBJECT://User</definition>
+            <referenceName>Input:Sender</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Recipient</apiName>
+            <definition>SOBJECT://Lead</definition>
+            <referenceName>Input:Recipient</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>RelatedObject</apiName>
+            <definition>SOBJECT://Product2</definition>
+            <referenceName>Input:Product2</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>ox85NUwwOKBEUB6fHiUm0I46L4VHDXtRvPEudbbFHNI=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__salesEmail</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ManagedTopics xmlns="http://soap.sforce.com/2006/04/metadata">
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Featured:Billing Support</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Billing Support</name>
+        <parentName></parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Featured:Order Support</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Order Support</name>
+        <parentName></parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Featured:Product Support</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Product Support</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Navigational:Billing Support</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Billing Support</name>
+        <parentName></parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Navigational:Footwear</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Footwear</name>
+        <parentName>Product Lines</parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Navigational:Men</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Men</name>
+        <parentName>Product Lines</parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Navigational:Order Support</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Order Support</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Navigational:Product Lines</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Product Lines</name>
+        <parentName></parentName>
+        <position>3</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Navigational:Product Support</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Product Support</name>
+        <parentName></parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Coral Cloud Help Center.Navigational:Women</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Women</name>
+        <parentName>Product Lines</parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+</ManagedTopics>

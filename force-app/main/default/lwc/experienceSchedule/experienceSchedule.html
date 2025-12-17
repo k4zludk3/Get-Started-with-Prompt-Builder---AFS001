@@ -1,0 +1,133 @@
+<template>
+  <lightning-card title="Experience Availability" icon-name="standard:event">
+    <div class="slds-grid slds-wrap">
+      <div class="slds-size_1-of-1 slds-p-bottom_small">
+        <div class="slds-grid slds-wrap">
+          <div class="slds-size_3-of-12 slds-align-middle slds-text-align_right">
+            <lightning-icon icon-name="utility:chevronleft" size="x-small" onclick={decreaseDate}></lightning-icon>
+          </div>
+          <div class="slds-size_6-of-12">
+            <h2 class="slds-text-heading_small slds-text-align_center slds-align-middle">
+              <lightning-formatted-date-time month="long" day="numeric" year="numeric" value={date}></lightning-formatted-date-time>
+            </h2>
+          </div>
+          <div class="slds-size_3-of-12 slds-align-middle">
+            <lightning-icon icon-name="utility:chevronright" size="x-small" onclick={increaseDate}></lightning-icon>
+          </div>
+        </div>
+      </div>
+      <div class="slds-size_1-of-1">
+        <img class="experience-image slds-p-around_small" src={pictureURL}/>
+      </div>
+      <div class="slds-size_1-of-1">
+        <div class="slds-grid slds-wrap slds-p-left_medium slds-p-right_medium">
+          <div class="slds-size_1-of-1 slds-p-bottom_small">
+            <h2 class="slds-text-heading_medium"><strong>{name}</strong></h2>
+            <lightning-formatted-rich-text value={description}></lightning-formatted-rich-text>
+          </div>
+          <div class="slds-size_1-of-1">
+            <h2 class="slds-text-heading_small slds-p-bottom_small"><strong>Available Time Slots</strong></h2>
+          </div>
+          <template if:true={loading}>
+            <div class="spinner-contaner">
+                <lightning-spinner size="medium" alternative-text="Loading"></lightning-spinner>
+            </div>
+          </template>
+          <template if:false={loading}>
+            <template if:true={selectedExperiences}>
+                <template for:each={selectedExperiences} for:item="selectedExperience">
+                  <div key={selectedExperience.Id} class="slds-size_1-of-1 experience-card">
+                    <div class="slds-grid slds-wrap">
+                      <div class="slds-size_11-of-12">
+                        <div class="slds-grid slds-wrap">
+                          <div class="slds-size_1-of-1 slds-p-top_small">
+                            <div class="slds-form__item" role="listitem">
+                              <div class="slds-form-element slds-form-element_stacked">
+                                <div class="slds-form-element__control">
+                                  <strong>
+                                    <lightning-formatted-date-time value={selectedExperience.Date__c} month="long" day="numeric" year="numeric">
+                                    </lightning-formatted-date-time>
+                                    -
+                                    <lightning-formatted-date-time
+                                      value={selectedExperience.Start_Time__c}
+                                      hour="2-digit"
+                                      hour12="false"
+                                      minute="2-digit"
+                                      time-zone="UTC"
+                                    >
+                                    </lightning-formatted-date-time>
+                                  </strong>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="slds-size_1-of-2">
+                            <div class="slds-form__item" role="listitem">
+                              <div class="slds-form-element slds-form-element_stacked">
+                                <label class="slds-form-element__label" for="stacked-form-element-id-01">Start</label>
+                                <div class="slds-form-element__control">
+                                  <lightning-formatted-date-time
+                                    value={selectedExperience.Start_Time__c}
+                                    hour="2-digit"
+                                    hour12="false"
+                                    minute="2-digit"
+                                    time-zone="UTC"
+                                  >
+                                  </lightning-formatted-date-time>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="slds-size_1-of-2">
+                            <div class="slds-form__item" role="listitem">
+                              <div class="slds-form-element slds-form-element_stacked">
+                                <label class="slds-form-element__label" for="stacked-form-element-id-01">End</label>
+                                <div class="slds-form-element__control">
+                                  <lightning-formatted-date-time
+                                    value={selectedExperience.End_Time__c}
+                                    hour="2-digit"
+                                    hour12="false"
+                                    minute="2-digit"
+                                    time-zone="UTC"
+                                  >
+                                  </lightning-formatted-date-time>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="slds-size_1-of-1">
+                            <div class="slds-form__item" role="listitem">
+                              <div class="slds-form-element slds-form-element_stacked">
+                                <label class="slds-form-element__label" for="stacked-form-element-id-01">Percentage Booked</label>
+                                <div class="slds-form-element__control">
+                                  <div class="slds-grid slds-wrap">
+                                    <div class="slds-size_10-of-12 slds-align-middle">
+                                      <lightning-progress-bar
+                                        value={selectedExperience.Percentage_Booked__c}
+                                        size="large"
+                                        variant="circular"
+                                      ></lightning-progress-bar>
+                                    </div>
+                                    <div class="slds-size_2-of-12 slds-align_absolute-center">
+                                      <p><strong>{selectedExperience.Percentage_Booked__c}%</strong></p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-size_1-of-12 slds-align-middle">
+                        <lightning-icon icon-name="utility:chevronright" data-id={selectedExperience.Id} size="small" onclick={viewInstance}></lightning-icon>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </template>
+          </template>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+</template>

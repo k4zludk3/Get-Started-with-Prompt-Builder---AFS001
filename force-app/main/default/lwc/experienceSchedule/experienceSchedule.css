@@ -1,0 +1,21 @@
+.experience-image{
+    border-radius: 14px;  
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: middle;
+}
+
+.experience-card{
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: rgb(201, 201, 201) !important;
+    border-radius: 0.25rem !important;
+}
+
+.spinner-container{
+    position: relative;
+    display: inline-block;
+    height: 150px;
+    width: 100%;
+}

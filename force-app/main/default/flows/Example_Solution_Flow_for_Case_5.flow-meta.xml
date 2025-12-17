@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Sets the EventSummary variable to a string made of reservation details from the previous query.</description>
+        <name>Create_Event_Summary</name>
+        <label>Create Event Summary</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>EventSummary</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Guest checked into a {!Fetch_Reservations.Room_Type__c} room on {!Fetch_Reservations.Check_In_Date__c} and will check out on {!Fetch_Reservations.Check_Out_Date__c}</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Check_In_Event_Record</targetReference>
+        </connector>
+    </assignments>
+    <description>An example flow to show how to build a check-in event from a reservation record.
+You will need to create a copilot action from this, then add it to the copilot for it to work.</description>
+    <environments>Default</environments>
+    <interviewLabel>Example Solution Flow for Case 5 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Example Solution Flow for Case 5</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates an event record to show the check-in on the contact record</description>
+        <name>Create_Check_In_Event_Record</name>
+        <label>Create Check In Event Record</label>
+        <locationX>176</locationX>
+        <locationY>458</locationY>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>EventSummary</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EndDateTime</field>
+            <value>
+                <elementReference>Fetch_Reservations.Check_Out_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsAllDayEvent</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StartDateTime</field>
+            <value>
+                <elementReference>Fetch_Reservations.Check_In_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Resort Stay</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Stay</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>ContactRecordID</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Event</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Finds reservations where the Contact ID matches the external reservation ID on the current contact.</description>
+        <name>Fetch_Reservations</name>
+        <label>Fetch Reservations</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Event_Summary</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ExternalContactID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>External_Reservation__c</object>
+        <sortField>Check_In_Date__c</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Locates the record for the contact and sets the contact ID</description>
+        <name>Find_External_Contact_ID</name>
+        <label>Find External Contact ID</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Fetch_Reservations</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactRecordID</elementReference>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputAssignments>
+            <assignToReference>ExternalContactID</assignToReference>
+            <field>External_Id__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ContactName</assignToReference>
+            <field>Name</field>
+        </outputAssignments>
+        <sortField>Id</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Find_External_Contact_ID</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>Full name of the contact</description>
+        <name>ContactName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Salesforce ID for Contact Record</description>
+        <name>ContactRecordID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Holds details of the reservation</description>
+        <name>EventSummary</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>The reference for this contact in the reservation system</description>
+        <name>ExternalContactID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

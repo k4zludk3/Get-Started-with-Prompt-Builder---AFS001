@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Create a Guest event for a contact.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>The contact Next Check In Date</description>
+        <name>contactCheckinDate</name>
+        <dataType>Date</dataType>
+        <expression>{!contactRecord.Next_Check_in_Date__c}</expression>
+    </formulas>
+    <interviewLabel>Guest Check in Event {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Guest Check in Event</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create a reservation record including a Contact Id and details about check in and check out.</description>
+        <name>Create_an_Event_Record</name>
+        <label>Create an Event Record</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignRecordIdToReference>eventId</assignRecordIdToReference>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>contactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Details__c</field>
+            <value>
+                <elementReference>eventDetails</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Guest_Event__c</object>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_an_Event_Record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Event Details Summary</description>
+        <name>eventDetails</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The guest checks in this date: {!contactCheckinDate}</text>
+    </textTemplates>
+    <variables>
+        <name>checkInDate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The Id of the Contact the credit will be issued to.</description>
+        <name>contactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>contactRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <description>The id of the Guest Event record that was created.</description>
+        <name>eventId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

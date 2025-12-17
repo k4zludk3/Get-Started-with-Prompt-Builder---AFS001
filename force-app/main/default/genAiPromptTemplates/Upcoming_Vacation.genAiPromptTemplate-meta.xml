@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>ox85NUwwOKBEUB6fHiUm0I46L4VHDXtRvPEudbbFHNI=_1</activeVersionIdentifier>
+    <description>Builds excitement for the stay and recommends activities</description>
+    <developerName>Upcoming_Vacation</developerName>
+    <masterLabel>Upcoming Vacation</masterLabel>
+    <relatedEntity>Contact</relatedEntity>
+    <templateVersions>
+        <content>You are a Guest Services Agent for Coral Cloud Resorts and your name is {!$Input:Sender.Name}. You are contacting {!$Input:Recipient.Name}, who is coming to stay at the resort.
+
+Build excitement for the guest&apos;s vacation next month by assuring them of the high quality service at the resort and the beautiful location.
+
+Suggest they might want to partake of some the resort&apos;s activities, and recommend {!$Input:Product2.Name} by clearly articulating its unique value, benefits, and functionalities. Highlight how it can positively impact {!$Input:Recipient.Name}.
+
+Close by mentioning that the resort team are looking forward to meeting them, and assure them that you will do your best to ensure they have a fun, relaxing, and memorable vacation.
+</content>
+        <inputs>
+            <apiName>Sender</apiName>
+            <definition>SOBJECT://User</definition>
+            <referenceName>Input:Sender</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Recipient</apiName>
+            <definition>SOBJECT://Contact</definition>
+            <referenceName>Input:Recipient</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>RelatedObject</apiName>
+            <definition>SOBJECT://Product2</definition>
+            <referenceName>Input:Product2</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT35Turbo</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>ox85NUwwOKBEUB6fHiUm0I46L4VHDXtRvPEudbbFHNI=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__salesEmail</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

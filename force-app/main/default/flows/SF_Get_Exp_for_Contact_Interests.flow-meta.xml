@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>This element adds information to the prompt about a experience a contact may be interested in</description>
+        <name>Add_Experience_Info</name>
+        <elementSubtype>AddPromptInstructions</elementSubtype>
+        <label>Add Experience Info</label>
+        <locationX>264</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>$Output.Prompt</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>{!Iterate_Experiences.Name}
+</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Experiences</targetReference>
+        </connector>
+    </assignments>
+    <description>This is a pre-built flow to complete Exercise 3-6 Task 1.  Use this if you&apos;re not confident building your own flow.
+The flow retrieves experiences a contact may be interested in.</description>
+    <environments>Default</environments>
+    <interviewLabel>SF Get Exp for Contact Interests {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SF Get Exp for Contact Interests</label>
+    <loops>
+        <description>Iterates experiences so we can print them out individually to the prompt</description>
+        <name>Iterate_Experiences</name>
+        <label>Iterate Experiences</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <collectionReference>Get_Experiences</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Experience_Info</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>PromptFlow</processType>
+    <recordLookups>
+        <description>This step retrieves Experiences that have an Activity_Type__c that matches Contact.Interest1__c, Contact.Interest2__c or Contact.Interest3__c</description>
+        <name>Get_Experiences</name>
+        <label>Get Experiences</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Iterate_Experiences</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Input.RelatedEntity.Interest1__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Input.RelatedEntity.Interest2__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Input.RelatedEntity.Interest3__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Experience__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <capabilityTypes>
+            <name>PromptTemplateType://einstein_gpt__fieldCompletion</name>
+            <capabilityName>PromptTemplateType://einstein_gpt__fieldCompletion</capabilityName>
+            <inputs>
+                <name>RelatedEntity</name>
+                <capabilityInputName>RelatedEntity</capabilityInputName>
+                <dataType>SOBJECT://Contact</dataType>
+                <isCollection>false</isCollection>
+            </inputs>
+        </capabilityTypes>
+        <connector>
+            <targetReference>Get_Experiences</targetReference>
+        </connector>
+        <triggerType>Capability</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
